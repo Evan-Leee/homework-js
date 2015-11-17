@@ -1,0 +1,11 @@
+{
+  "name": "homework-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -a 0.0.0.0 -p 8000"
+  },
+  "author": "",
+  "license": "ISC"
+}
