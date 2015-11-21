@@ -28,8 +28,9 @@ div.search-area {
 
 div.result {
     clear: both;
-    margin-top: 30px;
+    padding-top: 25px;
 }
+
 
 div.result span:nth-child(1){
     clear: both;
