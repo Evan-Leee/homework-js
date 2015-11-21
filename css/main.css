@@ -25,18 +25,10 @@ div.search-area {
     outline-color: #20419A;
 }
 
-div.start {
-    text-align: center;
-    font-size: 70px;
-    color: #B5B9C6;
-    margin: 60px auto;
-}
 
 div.result {
     clear: both;
     margin-top: 30px;
-    margin-left: 50px;
-    margin-right: 50px;
 }
 
 div.result span:nth-child(1){
