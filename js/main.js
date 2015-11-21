@@ -13,34 +13,45 @@ function timeFormat(time) {
     return year + '-' + month + '-' + day;
 }
 
+function listBookmarks(key,bookmarks) {
+    $("div.result").remove();
+    var reg = new RegExp(key, "gim");
+
+    bookmarks.forEach(function(bookmark){
+        var div,divStart,divMiddle,divEnd;
+        divStart = "<div class=\"result\"><span class=\"title\">";
+        divEnd = "</span><span class=\"created\">Created @ " +
+        timeFormat(bookmark.created) +
+        "</span>" +
+        "<hr>" +
+        "</div>";
+
+        if(key !== ''){
+            if(bookmark.title.search(reg) > 0)
+            divMiddle = bookmark.title.replace(reg,"<em class='high-light'>$&</em>");
+        } else {
+            divMiddle = bookmark.title;
+        }
+
+        if(divMiddle){
+            div = divStart + divMiddle + divEnd;
+            $(".search-area").after(div);
+        }
+    });
+}
+
+var result;
+
 $(document).ready(function () {
+    $.getJSON("seed/bookmarks.json", function (temp) {
+        result = temp;
+        listBookmarks('',temp);
+    });
+
     $(".search").bind("input propertychange", function () {
         var key = $(this).val();
-        $.getJSON("seed/bookmarks.json", {key: key}, function (result) {
-            $("div.result").remove();
+        listBookmarks(key,result);
 
-            if(key !== ''){
-                $("div.start").css("display","none");
-                var reg = new RegExp(key, "gim");
-                result.forEach(function (item) {
-                    if (item.title.search(reg) > 0) {
-                        var div = "<div class=\"result\">" +
-                            "<span class=\"title\">" +
-                            item.title.replace(reg,"<em class='high-light'>$&</em>") +
-                            "</span>" +
-                            "<span class=\"created\">Created @ " +
-                            timeFormat(item.created) +
-                            "</span>" +
-                            "<hr>" +
-                            "</div>";
-                        $(".search-area").after(div);
-                    }
-                });
-            }else {
-                $("div.start").css("display","block");
-            }
-
-        })
     })
 });
 
