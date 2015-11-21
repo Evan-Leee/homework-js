@@ -1,12 +1,9 @@
+body{
+    background: #E0E1E3;
+}
 
 section {
-    max-width: 1000px;
-    min-height: 600px;
-    background: #E0E1E3;
-    margin: 50px auto;
     text-align: center;
-    border: 1px solid #B5B9C6;
-    border-radius: 3px;
     padding: 20px 50px;
     font-family: sans-serif;
 }
