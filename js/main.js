@@ -51,7 +51,6 @@ $(document).ready(function () {
     $(".search").bind("input propertychange", function () {
         var key = $(this).val();
         listBookmarks(key,result);
-
     })
 });
 
