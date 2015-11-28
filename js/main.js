@@ -48,7 +48,7 @@ $(document).ready(function () {
         listBookmarks('',temp);
     });
 
-    $(".search").bind("input propertychange", function () {
+    $(".search").bind("input", function () {
         var key = $(this).val();
         listBookmarks(key,result);
     })
